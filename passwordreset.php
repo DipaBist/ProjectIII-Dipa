@@ -10,6 +10,7 @@
 <body>
     <div class="forgot-password-wrapper">
         <form action="">
+            
             <h1>Forgot Password</h1>
             <p>Enter your email address and we’ll send you a link to reset your password.</p>
             
