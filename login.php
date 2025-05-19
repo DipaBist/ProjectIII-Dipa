@@ -25,7 +25,6 @@
                 <a href="passwordreset.html">Forgot password?</a>
             </div>
             <a href="homepage.html">
-                <!--<button type="button" class="btn">Login</button>-->
                 <button type="submit" class="btn">Login </button>
             </a>
             
