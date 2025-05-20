@@ -9,32 +9,32 @@
 </head>
 <body>
     <div class="wrapper">
-        <form action="#">
+        <form action="#" methos>
             <h1>Sign Up</h1>
             <div class="input-box">
                 <i class='bx bxs-user'></i>
-                <input type="text" placeholder="First Name" required>
+                <input type="text" placeholder="First Name" name="First_name" required>
             </div>
             <div class="input-box">
                 <i class='bx bxs-user'></i>
-                <input type="text" placeholder="Last Name" required>
+                <input type="text" placeholder="Last Name" name="last_name" required>
             </div>
             <div class="input-box">
                 <i class='bx bxs-envelope'></i>
-                <input type="email" placeholder="Email" required>
+                <input type="email" placeholder="Email" name="email" required>
             </div>
             <div class="input-box">
                 <i class='bx bxs-lock-alt'></i>
-                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Password" name="password" required>
             </div>
             
             <div class="input-box">
                 <i class='bx bxs-lock-alt'></i>
-                <input type="password" placeholder="Confirm Password" required>
+                <input type="password" placeholder="Confirm Password" name="confirm" required>
             </div>
-            <button type="submit" class="btn">Sign Up</button>
+            <button type="submit" class="btn" name ="submit">Sign Up</button>
             <div class="login-link">
-                <p>Already have an account? <a href="index.html">Login</a></p>
+                <p>Already have an account? <a href="login.php">Login</a></p>
             </div>
         </form>
     </div>
