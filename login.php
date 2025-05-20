@@ -1,4 +1,30 @@
+<?php
+session_start();
 
+// Handle login
+if (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $password = md5($_POST['password']); // Hash password with MD5
+
+    // Connect to database
+    $con = mysqli_connect("localhost", "root", "", "E_Clothing_Store");
+
+    if ($con) {
+        $sql = "SELECT * FROM User WHERE email='$email' AND password='$password' AND deleted_at IS NULL";
+        $res = mysqli_query($con, $sql);
+
+        if ($res && mysqli_num_rows($res) > 0) {
+            $_SESSION['email'] = $email;
+            header("Location: homepage.html");
+            exit();
+        } else {
+            echo "<script>alert('Invalid email or password!');</script>";
+        }
+    } else {
+        echo "<script>alert('Database connection failed!');</script>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,22 +36,22 @@
 </head>
 <body>
     <div class="wrapper">
-        <form action="">
+        <form action="" method="post">
             <h1>Login</h1>
             <div class="input-box"> 
                 <i class='bx bxs-user'></i>
-                <input type="text" placeholder="Username" required>
+                <input type="email" placeholder="email" name="email" required>
             </div>
             <div class="input-box">
                 <i class='bx bxs-lock-alt'></i>
-                <input type="password" placeholder="Password" required>  
+                <input type="password" placeholder="Password" name="password" required>  
             </div>
             <div class="remember-forgot">
                 <label><input type="checkbox"> Remember me</label>
                 <a href="passwordreset.html">Forgot password?</a>
             </div>
             <a href="homepage.html">
-                <button type="submit" class="btn">Login </button>
+                <button type="submit" class="btn" name="login"v>Login </button>
             </a>
             
             <div class="Signup-link">
@@ -43,5 +69,16 @@
             
         </form>
     </div>
+
+        <script>
+        const rememberCheckbox = document.querySelector('input[name="remember"]');
+        const passwordInput = document.querySelector('input[name="password"]');
+
+        rememberCheckbox.addEventListener('change', function () {
+            passwordInput.type = this.checked ? 'text' : 'password';
+        });
+        
+    </script>
+
 </body>
 </html>
