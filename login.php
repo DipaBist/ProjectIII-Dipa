@@ -48,14 +48,14 @@ if (isset($_POST['login'])) {
             </div>
             <div class="remember-forgot">
                 <label><input type="checkbox"> Remember me</label>
-                <a href="passwordreset.html">Forgot password?</a>
+                <a href="passwordreset.php">Forgot password?</a>
             </div>
             <a href="homepage.html">
                 <button type="submit" class="btn" name="login"v>Login </button>
             </a>
             
             <div class="Signup-link">
-                <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+                <p>Don't have an account? <a href="signup.php">Sign up</a></p>
             </div>
             <div class="divider">
                 <hr><span>Or Login with</span><hr>
