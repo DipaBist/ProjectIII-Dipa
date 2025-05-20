@@ -72,7 +72,6 @@ if (isset($_POST['login'])) {
                     Sign in with Google
                 </button>
                 
-            
         </form>
     </div>
 
