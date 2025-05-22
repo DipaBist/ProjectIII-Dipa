@@ -21,6 +21,27 @@ function getCount($table, $condition = 1) {
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .hamburger {
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #34495e;
+    border-radius: 4px;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #2c3e50;
+    color: white;
+    height: 100vh;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+.sidebar.hide {
+    margin-left: -220px; 
+}
+</style>
 </head>
 <body>
     <div class="header">
@@ -38,7 +59,7 @@ function getCount($table, $condition = 1) {
     </div>
 
     <div class="container">
-        <div class="sidebar">
+        <div class="sidebar" id="sidebar">
             <h3>Menu</h3>
             <a href="#"><i class="fas fa-users"></i> Users</a>
             <a href="#"><i class="fas fa-tshirt"></i> Products</a>
@@ -67,5 +88,12 @@ function getCount($table, $condition = 1) {
     <div class="footer">
         <p>&copy; 2025 E-Clothing Store. All Rights Reserved.</p>
     </div>
+    <script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('hide');
+    }
+</script>
+
 </body>
 </html>
