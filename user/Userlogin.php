@@ -38,7 +38,7 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E Clothing Store</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
@@ -55,12 +55,23 @@ if (isset($_POST['login'])) {
             </div>
             <div class="remember-forgot">
                 <label><input type="checkbox"> Remember me</label>
-            
+                <a href="passwordreset.php">Forgot password?</a>
             </div>
             
                 <button type="submit" class="btn" name="login">Login </button>
             
+            <div class="Signup-link">
+                <p>Don't have an account? <a href="signup.php">Sign up</a></p>
+            </div>
+            <div class="divider">
+                <hr><span>Or Login with</span><hr>
+            </div>
             
+                <button type="button" class="google-btn" onclick="alert('Button clicked!')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png" alt="Google logo">
+                    Sign in with Google
+                </button>
+                
         </form>
     </div>
 

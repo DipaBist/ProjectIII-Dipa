@@ -1,7 +1,6 @@
 <?php
 session_start();
-
-if (!isset($_SESSION['email'])) {
+if(!isset($_SESSION['email'])){
     header("Location: Adminlogin.php");
     exit();
 }
@@ -18,22 +17,31 @@ $totalProducts = mysqli_fetch_assoc($res)['total'] ?? 0;
 $res = mysqli_query($con, "SELECT COUNT(*) AS total FROM user WHERE deleted_at IS NULL");
 $totalUsers = mysqli_fetch_assoc($res)['total'] ?? 0;
 
-$res = mysqli_query($con, "SELECT COUNT(*) AS total FROM `orders` WHERE order_status='pending'");
+$res = mysqli_query($con, "SELECT COUNT(*) AS total FROM `order` WHERE order_status='pending'");
 $pendingOrders = mysqli_fetch_assoc($res)['total'] ?? 0;
 
 $res = mysqli_query($con, "SELECT SUM(total) AS total FROM orderdetail");
 $totalRevenue = mysqli_fetch_assoc($res)['total'] ?? 0;
 
 $adminName = $_SESSION['admin_name'] ?? $_SESSION['email'];
+
+// Fetch products for table
+$productQuery = mysqli_query($con, "SELECT * FROM product");
+$products = [];
+if ($productQuery) {
+    while ($row = mysqli_fetch_assoc($productQuery)) {
+        $products[] = $row;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>E-Clothing Store Admin Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>E-Clothing Store Admin Dashboard</title>
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="dashboard.css" />
 </head>
 <body>
     <!-- Top Navigation -->
@@ -58,8 +66,12 @@ $adminName = $_SESSION['admin_name'] ?? $_SESSION['email'];
         <ul class="sidebar-menu">
             <li><a href="#" class="sidebar-link active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
 
-            <!-- Products as a standalone link (no dropdown) -->
-            <li><a href="#" class="sidebar-link"><i class="fas fa-box-open"></i> Products</a></li>
+            <!-- Products as a simple link -->
+            <li>
+                <a href="../product/index.php" class="sidebar-link">
+                    <i class="fas fa-box-open"></i> Products
+                </a>
+            </li>
 
             <!-- Categories with dropdown -->
             <li class="dropdown">
@@ -111,12 +123,12 @@ $adminName = $_SESSION['admin_name'] ?? $_SESSION['email'];
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2025 E-Clothing Store. All rights reserved.</p>
+        <p>&copy; 2025 E-Clothing Store. All Rights Reserved.</p>
     </footer>
 
     <!-- Scripts -->
     <script>
-        // Dropdown toggle for categories
+        // Dropdown toggle for categories and products
         document.querySelectorAll('.dropdown-toggle').forEach(function(el) {
             el.addEventListener('click', function(e) {
                 e.preventDefault();
