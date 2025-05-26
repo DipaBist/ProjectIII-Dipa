@@ -42,6 +42,7 @@ if (isset($_POST['login'])) {
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+    <div class="backdrop-overlay"></div>
     <div class="wrapper">
         <form action="" method="post">
             <h1>Login</h1>
