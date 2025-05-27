@@ -4,6 +4,7 @@ if(!isset($_SESSION['email'])){
     header("Location: Adminlogin.php");
     exit();
 }
+include('includes/headerAsidebar.php'); 
 
 $con = mysqli_connect("localhost", "root", "", "E_Clothing_Store");
 if (!$con) {
@@ -44,55 +45,7 @@ if ($productQuery) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-    <!-- Top Navigation -->
-    <header class="topnav">
-        <div class="logo">
-            <i class="fas fa-tshirt"></i> E-Clothing Store
-        </div>
-        <nav class="topnav-menu">
-            <a href="#" class="nav-link active">Home</a>
-            <a href="#" class="nav-link">About Us</a>
-            <a href="#" class="nav-link">Contact Us</a>
-            <a href="#" class="nav-link">Help</a>
-            <a href="Logout.php" class="nav-link logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
-        </nav>
-        <div class="welcome-msg">
-            <i class="fas fa-user-circle"></i> Welcome, <strong><?php echo htmlspecialchars($adminName); ?></strong>
-        </div>
-    </header>
-
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <ul class="sidebar-menu">
-            <li><a href="#" class="sidebar-link active"><i class="fas fa-chart-line"></i> Dashboard</a></li>
-
-            <!-- Products as a simple link -->
-            <li>
-                <a href="../product/index.php" class="sidebar-link">
-                    <i class="fas fa-box-open"></i> Products
-                </a>
-            </li>
-
-            <!-- Categories with dropdown -->
-            <li class="dropdown">
-                <a href="#" class="sidebar-link dropdown-toggle">
-                    <i class="fas fa-tags"></i> Categories <i class="fas fa-chevron-down"></i>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#" class="sidebar-sublink">Men</a></li>
-                    <li><a href="#" class="sidebar-sublink">Women</a></li>
-                    <li><a href="#" class="sidebar-sublink">Babies</a></li>
-                </ul>
-            </li>
-
-            <li><a href="#" class="sidebar-link"><i class="fas fa-users"></i> Customers</a></li>
-            <li><a href="#" class="sidebar-link"><i class="fas fa-shopping-cart"></i> Orders</a></li>
-            <li><a href="#" class="sidebar-link"><i class="fas fa-clipboard-list"></i> Order Details</a></li>
-            <li><a href="#" class="sidebar-link"><i class="fas fa-file-alt"></i> Reports</a></li>
-            <li><a href="#" class="sidebar-link"><i class="fas fa-cog"></i> Settings</a></li>
-        </ul>
-    </aside>
-
+    
     <!-- Main Content -->
     <main class="main-content">
         <h1>Dashboard Overview</h1>
@@ -120,37 +73,7 @@ if ($productQuery) {
             </div>
         </div>
     </main>
+    <?php include('includes/footer.php'); ?>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2025 E-Clothing Store. All Rights Reserved.</p>
-    </footer>
-
-    <!-- Scripts -->
-    <script>
-        // Dropdown toggle for categories and products
-        document.querySelectorAll('.dropdown-toggle').forEach(function(el) {
-            el.addEventListener('click', function(e) {
-                e.preventDefault();
-                this.parentElement.classList.toggle('open');
-            });
-        });
-
-        // Sidebar link active state toggle
-        document.querySelectorAll('.sidebar-link').forEach(function(link) {
-            link.addEventListener('click', function() {
-                document.querySelectorAll('.sidebar-link').forEach(el => el.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        // Topnav menu active state toggle
-        document.querySelectorAll('.topnav-menu .nav-link').forEach(function(link) {
-            link.addEventListener('click', function() {
-                document.querySelectorAll('.topnav-menu .nav-link').forEach(el => el.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-    </script>
 </body>
 </html>

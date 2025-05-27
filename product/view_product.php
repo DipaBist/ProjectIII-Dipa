@@ -1,4 +1,5 @@
 <?php
+include('../admin/includes/headerAsidebar.php'); 
 // DB connection
 $con = mysqli_connect("localhost", "root", "", "E_Clothing_Store");
 if (!$con) die("DB connection failed: " . mysqli_connect_error());
@@ -23,7 +24,7 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 </script>
 </head>
 <body>
-
+<main class="main-content">
 <h1 class="page-title"><i class="fas fa-box-open"></i> Our Products</h1>
 
 <div class="search-container">
@@ -82,7 +83,8 @@ $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
     </button>
     <img id="largeImage" src="" alt="Detailed Product Image" />
 </div>
-
+</main>
+<?php include('../admin/includes/footer.php'); ?>
 <script>
 const searchInput = document.getElementById('searchInput');
 const productGrid = document.getElementById('productGrid');
